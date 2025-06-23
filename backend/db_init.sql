@@ -27,3 +27,13 @@ CREATE TABLE IF NOT EXISTS transactions (
   type VARCHAR(20) NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+-- Support Tickets table
+CREATE TABLE IF NOT EXISTS support_tickets (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id),
+  message TEXT NOT NULL,
+  status VARCHAR(10) NOT NULL DEFAULT 'open',
+  response TEXT,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
