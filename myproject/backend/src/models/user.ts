@@ -1,5 +1,4 @@
-import { Pool } from 'pg';
-import pool from './db'; // Ensure your db.ts exports an instance of Pool
+import pool from '../db';
 
 export interface User {
   id: number;

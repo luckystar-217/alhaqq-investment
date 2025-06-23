@@ -1,9 +1,6 @@
 import { Request, Response } from 'express';
 import { findUserById, updateUserBalance } from '../models/user';
-import { Pool } from 'pg';
-import { pool } from '../models/db'; // pool should be an instance of pg.Pool
-
-// Ensure that pool is exported as a Pool instance in ../models/db
+import pool from '../models/db'; // pool should be an instance of pg.Pool
 
 export async function getAllUsers(req: Request, res: Response) {
   const result = await pool.query('SELECT id, name, email, role, balance, created_at FROM users');
@@ -35,9 +32,3 @@ export async function debitWallet(req: Request, res: Response) {
   const updated = await updateUserBalance(userId, newBalance);
   res.json({ message: 'Wallet debited', user: updated });
 }
-
-const pool = new Pool({
-  // your database config here
-});
-
-export { pool };

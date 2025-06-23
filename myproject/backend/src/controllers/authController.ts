@@ -34,16 +34,3 @@ export async function getProfile(req: Request, res: Response) {
   if (!user) return res.status(404).json({ message: 'User not found' });
   res.json({ id: user.id, name: user.name, email: user.email, role: user.role, balance: user.balance });
 }
-
-import { User } from '../../models/user';
-
-declare global {
-  namespace Express {
-    interface Request {
-      user?: {
-        id: string;
-        role: string;
-      };
-    }
-  }
-}

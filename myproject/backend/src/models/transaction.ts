@@ -1,3 +1,4 @@
+import { Pool } from 'pg';
 import pool from '../models/db';
 
 export interface Transaction {

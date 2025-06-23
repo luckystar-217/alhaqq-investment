@@ -1,4 +1,10 @@
-import { pool } from './db';
+import { Pool } from 'pg';
+import pool from './db'; // Corrected import path
+
+// If your db.ts exports a Pool instance, make sure it's like:
+// import { Pool } from 'pg';
+// const pool = new Pool({ /* config */ });
+// export default pool;
 
 export interface InvestmentProduct {
   id: number;
